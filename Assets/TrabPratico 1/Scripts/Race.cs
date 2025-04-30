@@ -20,7 +20,7 @@ public class Race : MonoBehaviour
     public void PassThroughCheckPoint(RaceCheckPoint check, Car car)
     {
         int index = checkPoints.IndexOf(check);
-        int newIndex = (index == checkPoints.Count-1) ? 0 : index + 1;
+        int newIndex = (index + 1) % checkPoints.Count;
 
         if(checkPoints[index].timesPassed[car] <= car.Laps)
             checkPoints[index].PassCar(car);

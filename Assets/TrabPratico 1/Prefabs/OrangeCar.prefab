@@ -175,3 +175,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Orange
+  carImage: {fileID: 21300000, guid: 1373104e76299dc4ba88c3eebf103f45, type: 3}

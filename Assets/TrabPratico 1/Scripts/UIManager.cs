@@ -6,11 +6,21 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private CarSelectionPanel carSelectionPanel;
+    [SerializeField] private VictoryPanel victoryPanel;
 
     private Panel activePanel;
 
+    public static UIManager instance;
+
     private void Awake()
     {
+        if(instance != null) 
+        {
+            Destroy(this);
+            return;
+        }
+
+        instance = this;
         carSelectionPanel.OnContinueClicked += OnContinuedFromSelection;
     }
 
@@ -22,15 +32,26 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        StartSelectionPanel();
+        ShowSelectionPanel();
     }
 
-    public void StartSelectionPanel() 
+    public void ShowSelectionPanel() 
+    {
+        SetActive(carSelectionPanel);   
+    }
+
+    public void ShowVictoryPanel(Car winner) 
+    {
+        victoryPanel.SetWinner(winner);
+        SetActive(victoryPanel);
+    }
+
+    private void SetActive(Panel panel)
     {
         if (activePanel != null)
             activePanel.Hide();
 
-        activePanel = carSelectionPanel;
+        activePanel = panel;
         activePanel.Show();
     }
 

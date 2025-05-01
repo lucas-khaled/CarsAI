@@ -12,8 +12,6 @@ public class Race : MonoBehaviour
     [SerializeField] private int totalLaps = 3;
     [SerializeField] private List<RaceCheckPoint> checkPoints;
     [SerializeField] private List<Transform> racePoints;
-    [SerializeField] private GameObject finishedPanel;
-    [SerializeField] private Text finhsedCarName;
 
     private List<Car> _cars = new List<Car>();
     private List<Car> finishedCars = new List<Car>();
@@ -45,8 +43,7 @@ public class Race : MonoBehaviour
 
     private void CarWon(Car car)
     {
-        finishedPanel.SetActive(true);
-        finhsedCarName.text = car.carName+" Won!";
+        UIManager.instance.ShowVictoryPanel(car);
     }
 
     public void StartRace(List<Car> carsPrefabs)

@@ -57,6 +57,17 @@ public class Race : MonoBehaviour
         InitializeChecks();
     }
 
+    public void Finish() 
+    {
+        foreach(var car in _cars) 
+        {
+            Destroy(car.gameObject);
+        }
+
+        _cars.Clear();
+        finishedCars.Clear();
+    }
+
     private void Awake()
     {
         if (instance != null)

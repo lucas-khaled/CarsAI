@@ -22,6 +22,13 @@ public class UIManager : MonoBehaviour
 
         instance = this;
         carSelectionPanel.OnContinueClicked += OnContinuedFromSelection;
+        victoryPanel.OnContinueClicked += OnContinueFromVictory;
+    }
+
+    private void OnContinueFromVictory()
+    {
+        Race.instance.Finish();
+        ShowSelectionPanel();
     }
 
     private void OnContinuedFromSelection(List<Car> cars)

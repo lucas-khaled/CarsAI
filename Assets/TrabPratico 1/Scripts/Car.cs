@@ -5,6 +5,7 @@ using UnityEngine;
 public class Car : MonoBehaviour
 {
     public string carName;
+    public Sprite carImage;
     public RaceCheckPoint CheckPoint { get; set; }
     public int Laps { get; set; }
     

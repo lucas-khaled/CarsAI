@@ -11,6 +11,7 @@ public class Race : MonoBehaviour
 
     [SerializeField] private int totalLaps = 3;
     [SerializeField] private List<RaceCheckPoint> checkPoints;
+    [SerializeField] private List<Transform> racePoints;
     [SerializeField] private GameObject finishedPanel;
     [SerializeField] private Text finhsedCarName;
 
@@ -48,9 +49,15 @@ public class Race : MonoBehaviour
         finhsedCarName.text = car.carName+" Won!";
     }
 
-    private void Start()
+    public void StartRace(List<Car> carsPrefabs)
     {
-        InitializeCarsAndChecks();
+        for(int i = 0; i < carsPrefabs.Count; i++) 
+        {
+            var car = Instantiate(carsPrefabs[i], racePoints[i].transform.position, racePoints[i].transform.rotation);
+            _cars.Add(car);
+        }
+
+        InitializeChecks();
     }
 
     private void Awake()
@@ -64,10 +71,8 @@ public class Race : MonoBehaviour
         instance = this;
     }
 
-    private void InitializeCarsAndChecks()
+    private void InitializeChecks()
     {
-        _cars.AddRange(GameObject.FindObjectsOfType<Car>());
-
         bool first = true;
         foreach (var check in checkPoints)
         {

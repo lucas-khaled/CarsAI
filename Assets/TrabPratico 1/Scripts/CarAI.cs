@@ -7,11 +7,11 @@ using UnityEngine.Serialization;
 [RequireComponent(typeof(Rigidbody))]
 public class CarAI : MonoBehaviour
 {
-    [SerializeField] private float maxVelocity = 20;
-    [SerializeField] private int numOfRaycast = 5;
-    [FormerlySerializedAs("raycastSize")] [SerializeField] private float breakDistance = 10;
-    [FormerlySerializedAs("carForce")] [SerializeField] private float carSteeringForce = 100;
-    [SerializeField] private float breakForce = 50;
+    public float maxVelocity = 20;
+    public int numOfRaycast = 5;
+    [FormerlySerializedAs("raycastSize")] public float breakDistance = 10;
+    [FormerlySerializedAs("carForce")] public float carSteeringForce = 100;
+    public float breakForce = 50;
     
     private Rigidbody rb;
     private float toFrontDistance = float.MaxValue;
